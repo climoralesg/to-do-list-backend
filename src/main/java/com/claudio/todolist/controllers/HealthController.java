@@ -11,12 +11,15 @@ import java.util.Map;
 
 @RestController
 public class HealthController {
+    
     @Autowired
     private HealthDao healthDao;
+
 
     @RequestMapping(value = "/health", method = RequestMethod.GET)
     @ResponseBody
     public Map <String,String> health(){
         return healthDao.health();
     }
+
 }
