@@ -2,19 +2,33 @@ package com.claudio.todolist.models;
 
 import java.util.Date;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document
 public class Task{
-
+    
+    //we can change to ObjectId object and we will see it in another format
+    @Id
+    private String _id;
     private String title;
     private String description;
     private boolean finished=false;
     private String state;
-    private Date created = new Date();
+    private Date created = new Date();  
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 
     public Task(){
-        System.out.println("Se ha creado un objeto task");
+        System.out.println("Created new object type task");
     }
     
     public String getTitle() {
