@@ -30,4 +30,11 @@ public class TaskDaoImpl implements TaskDao{
     public List <Task> getAllTask(){
         return mongoTemplate.findAll(Task.class);
     }
+
+    @Override
+    public Task getTask(String id){
+        return mongoTemplate.findById(id, Task.class);
+    }
+
+
 }
