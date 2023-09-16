@@ -2,14 +2,17 @@ package com.claudio.todolist.impl;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+
 import org.springframework.stereotype.Repository;
+
+
 
 import com.claudio.todolist.dao.TaskDao;
 import com.claudio.todolist.models.Task;
+
 
 @Repository
 public class TaskDaoImpl implements TaskDao{
@@ -34,6 +37,12 @@ public class TaskDaoImpl implements TaskDao{
     @Override
     public Task getTask(String id){
         return mongoTemplate.findById(id, Task.class);
+    }
+
+    @Override
+    public Task updateTask(Task task, String idTask){
+
+        
     }
 
 

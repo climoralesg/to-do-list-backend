@@ -31,8 +31,13 @@ public class TaskController {
     @RequestMapping(value = "/tasks/{id}",method = RequestMethod.GET)
     public Task geTask(@PathVariable String id){
         return taskDao.getTask(id);
+
     }
 
+    @RequestMapping(value = "/tasks/{id}", method = RequestMethod.PUT)
+    public Task updateTask(@RequestBody Task task, @PathVariable String id){
+        return taskDao.updateTask(task, id);
+    }
     
 
 

@@ -8,4 +8,5 @@ public interface TaskDao {
     Task addTask(Task task); 
     List <Task> getAllTask(); 
     Task getTask(String id); 
+    Task updateTask(Task task, String idTask);
 }
