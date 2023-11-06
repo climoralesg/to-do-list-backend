@@ -1,12 +1,12 @@
 package com.claudio.todolist.impl;
 
 import com.claudio.todolist.dao.HealthDao;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
+@Service
 public class HealthDaoImpl implements HealthDao {
 
     @Override

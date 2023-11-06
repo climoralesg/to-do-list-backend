@@ -3,18 +3,22 @@ package com.claudio.todolist.impl;
 import java.util.HashMap;
 import java.util.List;
 
+//import javax.management.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.stereotype.Service;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.beans.BeanUtils;
 
 
 import com.claudio.todolist.dao.TaskDao;
 import com.claudio.todolist.models.Task;
 
 
-@Repository
+@Service
 public class TaskDaoImpl implements TaskDao{
     
     @Autowired
@@ -42,8 +46,27 @@ public class TaskDaoImpl implements TaskDao{
     @Override
     public Task updateTask(Task task, String idTask){
 
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(idTask));
+
+        Task existingTask = mongoTemplate.findById(idTask, Task.class);
+
+        if(existingTask != null){
+            Update update = new Update();
+            BeanUtils.copyProperties(task, existingTask, "_id");
+            mongoTemplate.updateFirst(query, update, Task.class);
+        }
+        /* 
+        update.set("title", task.getTitle());
+        update.set("description", task.getDescription());
+        update.set("state", task.getState());
+        */
         
+        return mongoTemplate.findById(idTask, Task.class);
+       
     }
 
 
 }
+
+
