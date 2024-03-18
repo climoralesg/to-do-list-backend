@@ -56,6 +56,8 @@ public class TaskDaoImpl implements TaskDao {
             update.set("state", task.getState());
 
             mongoTemplate.updateFirst(query, update, Task.class);
+        }else{
+            throw new NoSuchElementFound("404","task not found");
         }
         return mongoTemplate.findById(idTask, Task.class);
 
