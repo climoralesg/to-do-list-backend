@@ -21,14 +21,7 @@ public class Task{
         return _id;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
 
-    public Task(){
-        System.out.println("Created new object type task");
-    }
-    
     public String getTitle() {
         return title;
     }

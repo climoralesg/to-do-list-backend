@@ -11,9 +11,10 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpStatus;
 
 import com.claudio.todolist.dao.TaskDao;
+import com.claudio.todolist.exception.NoSuchElementFound;
 import com.claudio.todolist.models.Task;
 
 @Service
@@ -25,7 +26,6 @@ public class TaskDaoImpl implements TaskDao {
     @Override
     public Task addTask(Task task) {
         HashMap<String, String> result = new HashMap<>();
-        System.out.println(task.toString());
         mongoTemplate.save(task);
         result.put("data", "OK");
         return task;
@@ -38,8 +38,14 @@ public class TaskDaoImpl implements TaskDao {
 
     @Override
     public Task getTask(String id) {
-        return mongoTemplate.findById(id, Task.class);
+        Task task=mongoTemplate.findById(id, Task.class);
+
+        if(task==null){
+            throw new NoSuchElementFound("P-404",HttpStatus.NOT_FOUND,"task not found");
+        }
+        return task;
     }
+    
 
     @Override
     public Task updateTask(Task task, String idTask) {
@@ -57,7 +63,7 @@ public class TaskDaoImpl implements TaskDao {
 
             mongoTemplate.updateFirst(query, update, Task.class);
         }else{
-            throw new NoSuchElementFound("404","task not found");
+            throw new NoSuchElementFound("P-404",HttpStatus.NOT_FOUND,"task not found");
         }
         return mongoTemplate.findById(idTask, Task.class);
 

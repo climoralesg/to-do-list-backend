@@ -10,8 +10,6 @@ public class ErrorDTO {
         this.code = code;
         this.message = message;
     }
-
-    
     public String getCode() {
         return code;
     }
