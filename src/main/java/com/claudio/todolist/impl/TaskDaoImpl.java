@@ -25,13 +25,13 @@ public class TaskDaoImpl implements TaskDao {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public Task addTask(Task task) {
+    public HashMap<String, String> addTask(Task task) {
         HashMap<String, String> result = new HashMap<>();
 
         try {
             mongoTemplate.save(task);
             result.put("data", "OK");
-            return task;
+            return result;
         } catch (Exception ex) {
             throw new GeneralException("P-400", HttpStatus.BAD_REQUEST, ex.getMessage());
         }
@@ -79,7 +79,21 @@ public class TaskDaoImpl implements TaskDao {
             }
             return mongoTemplate.findById(idTask, Task.class);
         } catch (Exception ex) {
-            System.out.println("Excepcion");
+            throw ex;
+        }
+    }
+
+    @Override 
+    public HashMap<String, String> deleteTask(String idTask){
+        HashMap<String, String> result = new HashMap<>();
+        Query query = new Query();
+
+        try{
+            query.addCriteria(Criteria.where("_id").is(idTask));
+            mongoTemplate.findAndRemove(query, Task.class);            
+            result.put("data", "OK");
+            return result;
+        }catch(Exception ex){
             throw ex;
         }
     }
