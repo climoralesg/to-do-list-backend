@@ -1,6 +1,5 @@
 package com.claudio.todolist.controllers;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -17,5 +16,11 @@ public class ControllerAdvice {
         return new ResponseEntity<>(errorDTO,ex.getHttpStatus());
     }
     
-
+    /* 
+    @ExceptionHandler(value = GeneralException.class)
+    public ResponseEntity<ErrorDTO> ElementFoundExceptioHandler(GeneralException ex){
+        ErrorDTO errorDTO = new ErrorDTO(ex.getCode(),ex.getMessage());
+        return new ResponseEntity<>(errorDTO,ex.getHttpStatus());
+    }
+    */
 }
