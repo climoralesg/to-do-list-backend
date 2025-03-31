@@ -1,12 +1,10 @@
 package com.claudio.todolist.controllers;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.claudio.todolist.dto.ErrorDTO;
-import com.claudio.todolist.exception.GeneralException;
 import com.claudio.todolist.exception.NoSuchElementFound;
 
 @RestControllerAdvice

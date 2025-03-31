@@ -1,11 +1,11 @@
-package com.claudio.todolist.dao;
+package com.claudio.todolist.interfaces;
 
 import java.util.HashMap;
 import java.util.List;
 
 import com.claudio.todolist.models.Task;
 
-public interface TaskDao {
+public interface TaskInterface {
     HashMap<String, String> addTask(Task task); 
     List <Task> getAllTask(); 
     Task getTask(String id); 
