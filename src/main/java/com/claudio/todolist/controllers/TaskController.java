@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.claudio.todolist.interfaces.TaskInterface;
+import com.claudio.todolist.dao.TaskInterface;
 import com.claudio.todolist.models.Task;
 
 @RestController

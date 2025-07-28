@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.HttpStatus;
 
-import com.claudio.todolist.interfaces.TaskInterface;
+import com.claudio.todolist.dao.TaskInterface;
 import com.claudio.todolist.exception.GeneralException;
 import com.claudio.todolist.exception.NoSuchElementFound;
 import com.claudio.todolist.models.Task;

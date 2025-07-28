@@ -1,4 +1,4 @@
-package com.claudio.todolist.interfaces;
+package com.claudio.todolist.dao;
 
 import java.util.Map;
 

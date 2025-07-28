@@ -1,8 +1,8 @@
 package com.claudio.todolist.impl;
 
-import com.claudio.todolist.interfaces.HealthInterface;
-
 import org.springframework.stereotype.Service;
+
+import com.claudio.todolist.dao.HealthInterface;
 
 import java.util.HashMap;
 import java.util.Map;
